@@ -147,6 +147,44 @@ namespace AddressTest
             DeleteFirst(Outlook.OlMailRecipientType.olCC);
         }
 
+        private void PokeRecipients()
+        {
+            string specialAddress = "HivePointSpecial@no.reply.hivepoint.com";
+            Add(specialAddress, Outlook.OlMailRecipientType.olTo);
+            Outlook.Recipients recipients = _mailItem.Recipients;
+            try
+            {
+                for (int i = 1; i <= recipients.Count; i++)
+                {
+                    Outlook.Recipient rec = recipients[i];
+                    try
+                    {
+                        if (String.Equals(rec.Address, specialAddress) || String.Equals(rec.Name, specialAddress))
+                        {
+                            recipients.Remove(i);
+                            return;
+                        }
+                    }
+                    finally
+                    {
+                        if (null != rec)
+                        {
+                            Marshal.ReleaseComObject(rec);
+                        }
+                    }
+
+                }
+            }
+            finally
+            {
+                if (null != recipients)
+                {
+                    Marshal.ReleaseComObject(recipients);
+                }
+                buttonRefresh_Click(null, null);
+            }
+        }
+
         private void DeleteFirst(Outlook.OlMailRecipientType type)
         {
             Outlook.Recipients recipients = _mailItem.Recipients;
@@ -182,6 +220,11 @@ namespace AddressTest
                 }
                 buttonRefresh_Click(null, null);
             }
+        }
+
+        private void buttonPoke_Click(object sender, EventArgs e)
+        {
+            PokeRecipients();
         }
 
     }

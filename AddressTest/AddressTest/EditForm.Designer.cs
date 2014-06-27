@@ -40,6 +40,7 @@
             this.buttonResolveAll = new System.Windows.Forms.Button();
             this.buttonDelete1stCC = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.buttonPoke = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxTo
@@ -150,11 +151,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.buttonDeleteFirstTo_Click);
             // 
+            // buttonPoke
+            // 
+            this.buttonPoke.Location = new System.Drawing.Point(93, 396);
+            this.buttonPoke.Name = "buttonPoke";
+            this.buttonPoke.Size = new System.Drawing.Size(75, 23);
+            this.buttonPoke.TabIndex = 13;
+            this.buttonPoke.Text = "Poke";
+            this.buttonPoke.UseVisualStyleBackColor = true;
+            this.buttonPoke.Click += new System.EventHandler(this.buttonPoke_Click);
+            // 
             // EditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(377, 431);
+            this.Controls.Add(this.buttonPoke);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonDelete1stCC);
             this.Controls.Add(this.buttonResolveAll);
@@ -188,5 +200,6 @@
         private System.Windows.Forms.Button buttonResolveAll;
         private System.Windows.Forms.Button buttonDelete1stCC;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonPoke;
     }
 }
